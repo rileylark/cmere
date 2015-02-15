@@ -19,7 +19,7 @@ module.exports = {
   devtool: false,
   entry: [
       'webpack/hot/only-dev-server',
-      './src/scripts/components/CmereApp.js'
+      './src/scripts/main.js'
   ],
 
   stats: {

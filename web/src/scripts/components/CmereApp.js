@@ -16,6 +16,7 @@ var CmereApp = React.createClass({
   render: function() {
     return (
       <div className='main'>
+          <h1>HI!!!</h1>
         <ReactTransitionGroup transitionName="fade">
           <img src={imageURL} />
         </ReactTransitionGroup>
@@ -23,6 +24,5 @@ var CmereApp = React.createClass({
     );
   }
 });
-React.render(<CmereApp />, document.getElementById('content')); // jshint ignore:line
 
 module.exports = CmereApp;

@@ -18,7 +18,7 @@ module.exports = {
 
   debug: false,
   devtool: false,
-  entry: './src/scripts/components/CmereApp.js',
+  entry: './src/scripts/main.js',
 
   stats: {
     colors: true,
