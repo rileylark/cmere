@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+jarsExcludedFromWebInfLib=/Users/rel/Documents/scratch/cmere/CmereSharedJsBridge/lib/CmereShared.jar|/sdk/gwt-2.7.0/validation-api-1.0.0.GA-sources.jar|/sdk/gwt-2.7.0/gwt-dev.jar|/sdk/gwt-2.7.0/gwt-user.jar|/sdk/gwt-2.7.0/validation-api-1.0.0.GA.jar
+launchConfigExternalUrlPrefix=

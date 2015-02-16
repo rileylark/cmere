@@ -18,5 +18,5 @@
   <source path='client'/>
 
   <!-- allow Super Dev Mode -->
-  <add-linker name="xsiframe"/>
+  <add-linker name="sso"/>
 </module>
