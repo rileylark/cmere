@@ -19,12 +19,13 @@
 
   <!-- Other module inherits                                      -->
 
+  <inherits name='us.larkoli.cmere.cmereShared' />
+  
   <!-- Specify the app entry point class.                         -->
   <entry-point class='us.larkoli.cmere.client.sharedJsBridge'/>
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
-  <source path='shared'/>
 
   <!-- allow Super Dev Mode -->
   <add-linker name="xsiframe"/>
