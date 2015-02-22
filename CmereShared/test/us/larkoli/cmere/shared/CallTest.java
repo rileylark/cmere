@@ -8,6 +8,8 @@ import static us.larkoli.cmere.shared.Card.SIX;
 import static us.larkoli.cmere.shared.Card.THREE;
 import static us.larkoli.cmere.shared.Card.TWO;
 
+import static us.larkoli.cmere.shared.PlayerId.*;
+
 import org.junit.Test;
 
 public class CallTest {
@@ -20,10 +22,10 @@ public class CallTest {
 
 		GameState state = new GameState(player1Hand, player2Hand, stack, 2, false, null);
 
-		state = new Move.Call(1).applyTo(state);
+		state = new Move.Call(PLAYER_A).applyTo(state);
 
 		assertEquals(true, state.gameOver);
-		assertEquals((Integer) 1, state.winnerId);
+		assertEquals(PLAYER_A, state.winnerId);
 	}
 
 	@Test
@@ -34,10 +36,10 @@ public class CallTest {
 
 		GameState state = new GameState(player1Hand, player2Hand, stack, 2, false, null);
 		
-		state = new Move.Call(1).applyTo(state);
+		state = new Move.Call(PLAYER_A).applyTo(state);
 		
 		assertEquals(true, state.gameOver);
-		assertEquals((Integer) 1, state.winnerId);
+		assertEquals(PLAYER_A, state.winnerId);
 	}
 	
 	@Test
@@ -48,9 +50,9 @@ public class CallTest {
 
 		GameState state = new GameState(player1Hand, player2Hand, stack, 2, false, null);
 		
-		state = new Move.Call(1).applyTo(state);
+		state = new Move.Call(PLAYER_A).applyTo(state);
 		
 		assertEquals(true, state.gameOver);
-		assertEquals((Integer) 2, state.winnerId);
+		assertEquals(PLAYER_B, state.winnerId);
 	}
 }

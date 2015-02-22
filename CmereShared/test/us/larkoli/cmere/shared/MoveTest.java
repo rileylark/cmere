@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static us.larkoli.cmere.shared.Card.*;
+import static us.larkoli.cmere.shared.PlayerId.*;
 
 public class MoveTest {
 
@@ -27,7 +28,7 @@ public class MoveTest {
 
 	@Test
 	public void testLay() {
-		Move.Lay lay = new Move.Lay(1, THREE);
+		Move.Lay lay = new Move.Lay(PLAYER_A, THREE);
 		
 		GameState newState = lay.applyTo(initialGameState);
 		
@@ -37,7 +38,7 @@ public class MoveTest {
 
 	@Test 
 	public void testDiscard() {
-		Move.Discard discard = new Move.Discard(2);
+		Move.Discard discard = new Move.Discard(PLAYER_B);
 		
 		GameState newState = discard.applyTo(initialGameState);
 		

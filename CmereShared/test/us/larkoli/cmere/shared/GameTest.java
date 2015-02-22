@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static us.larkoli.cmere.shared.Card.*;
+import static us.larkoli.cmere.shared.PlayerId.*;
 
 public class GameTest {
 
@@ -31,8 +32,8 @@ public class GameTest {
 	
 	@Test
 	public void testLay() {
-		game.addMove(new Move.Lay(1, ONE));
-		game.addMove(new Move.Lay(2, SIX));
+		game.addMove(new Move.Lay(PLAYER_A, ONE));
+		game.addMove(new Move.Lay(PLAYER_B, SIX));
 		
 		KnownGameState player1View = game.getPlayer1View();
 		assertEquals(new CardCollection(ONE, TWO, TWO, THREE, THREE), player1View.yourHand);

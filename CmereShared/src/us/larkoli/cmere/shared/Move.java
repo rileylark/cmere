@@ -4,18 +4,26 @@ import static us.larkoli.cmere.shared.Card.*;
 
 public abstract class Move {
 
-	public final int playerId;
+	public final PlayerId playerId;
 
-	public Move(int playerId) {
+	public Move(PlayerId playerId) {
 		this.playerId = playerId;
 	}
 
 	public final GameState applyTo(GameState initialGameState) {
 		GameStateBuilder builder = new GameStateBuilder().from(initialGameState);
 		
-		applyMutations(initialGameState, builder);
-		
-		return builder.toGameState();
+		if (legalMove(initialGameState)) {
+			applyMutations(initialGameState, builder);
+			
+			return builder.toGameState();	
+		} else {
+			throw new IllegalMoveException();
+		}
+	}
+	
+	public final boolean legalMove(GameState initialGameState) {
+		return true;
 	}
 	
 	protected abstract void applyMutations(GameState initialGameState, GameStateBuilder builder);
@@ -24,7 +32,7 @@ public abstract class Move {
 	public static class Lay extends Move {
 		public final Card card;
 
-		public Lay(int playerId, Card card) {
+		public Lay(PlayerId playerId, Card card) {
 			super(playerId);
 			this.card = card;
 		}
@@ -47,7 +55,7 @@ public abstract class Move {
 	}
 	
 	public static class Discard extends Move {
-		public Discard(int playerId) {
+		public Discard(PlayerId playerId) {
 			super(playerId);
 		}
 
@@ -59,14 +67,14 @@ public abstract class Move {
 	}
 	
 	public static class Call extends Move {
-		public Call(int playerId) {
+		public Call(PlayerId playerId) {
 			super(playerId);
 		}
 
 		@Override
 		public void applyMutations(GameState initialGameState, GameStateBuilder builder) {
 			CardCollection thisHand = initialGameState.getPlayerHand(playerId);
-			CardCollection otherHand = initialGameState.getOppositePlayerHand(playerId);
+			CardCollection otherHand = initialGameState.getPlayerHand(playerId.otherPlayer());
 			CardCollection stack = initialGameState.stack;
 			
 			if (otherHand.getCardSum() > stack.getCardSum()) {
@@ -74,8 +82,12 @@ public abstract class Move {
 			} else if (otherHand.getCardSum() < thisHand.getCardSum()) {
 				builder.setWinner(playerId);
 			} else {
-				builder.setLoser(playerId);
+				builder.setWinner(playerId.otherPlayer());
 			}
 		}
+	}
+	
+	public static class IllegalMoveException extends RuntimeException {
+		private static final long serialVersionUID = 1L;
 	}
 }
