@@ -24,8 +24,8 @@ public class Game {
 		return new KnownGameState(currentState.player2Hand, currentState.stack);
 	}
 
-	private GameState getCurrentGameState() {
-		GameState state = new GameState(player1InitialHand, player2InitialHand, new CardCollection());
+	public GameState getCurrentGameState() {
+		GameState state = new GameState(player1InitialHand, player2InitialHand);
 		for (Move move : moves) {
 			state = move.applyTo(state);
 		}

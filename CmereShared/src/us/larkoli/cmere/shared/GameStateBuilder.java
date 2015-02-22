@@ -2,15 +2,21 @@ package us.larkoli.cmere.shared;
 
 public class GameStateBuilder {
 	private CardCollection player1Hand, player2Hand, stack;
+	int numSixesDiscarded;
 
 	public GameStateBuilder from(GameState initialGameState) {
 		this.player1Hand = initialGameState.player1Hand;
 		this.player2Hand = initialGameState.player2Hand;
 		this.stack = initialGameState.stack;
+		this.numSixesDiscarded = initialGameState.numSixesDiscarded;
 		
 		return this;
 	}
 
+	public GameState toGameState() {
+		return new GameState(player1Hand, player2Hand, stack, numSixesDiscarded);
+	}
+	
 	public GameStateBuilder setPlayerHand(int playerId, CardCollection newHand) {
 		switch (playerId) {
 		case 1:
@@ -31,8 +37,8 @@ public class GameStateBuilder {
 		
 		return this;
 	}
-	
-	public GameState toGameState() {
-		return new GameState(player1Hand, player2Hand, stack);
+
+	public void setSixesDiscard(int newNumSixesDiscarded) {
+		this.numSixesDiscarded = newNumSixesDiscarded;
 	}
 }

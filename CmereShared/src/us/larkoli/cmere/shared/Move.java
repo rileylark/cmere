@@ -1,5 +1,7 @@
 package us.larkoli.cmere.shared;
 
+import static us.larkoli.cmere.shared.Card.*;
+
 public abstract class Move {
 
 	public final int playerId;
@@ -32,6 +34,23 @@ public abstract class Move {
 			return new GameStateBuilder().from(initialGameState)
 					.setPlayerHand(playerId, playersHand).setStack(stack)
 					.toGameState();
+		}
+	}
+	
+	public static class Discard extends Move {
+		public Discard(int playerId) {
+			super(playerId);
+		}
+
+		@Override
+		public GameState applyTo(GameState initialGameState) {
+			GameStateBuilder builder = new GameStateBuilder();
+			
+			builder.from(initialGameState);
+			builder.setSixesDiscard(initialGameState.numSixesDiscarded + 1);
+			builder.setPlayerHand(playerId, CardCollectionTransformer.removeCard(initialGameState.getPlayerHand(playerId), SIX));
+			
+			return builder.toGameState();
 		}
 	}
 }
