@@ -1,8 +1,11 @@
 package us.larkoli.cmere.shared;
 
+import java.util.ArrayList;
+
 public class Game {
 
 	public final CardCollection player1InitialHand, player2InitialHand;
+	private final ArrayList<Move> moves = new ArrayList<Move>();
 
 	public Game(CardCollection player1InitialHand,
 			CardCollection player2InitialHand) {
@@ -11,25 +14,26 @@ public class Game {
 	}
 
 	public KnownGameState getPlayer1View() {
-		return getView(1);
+
+		GameState currentState = getCurrentGameState();
+		return new KnownGameState(currentState.player1Hand, currentState.stack);
 	}
 
 	public KnownGameState getPlayer2View() {
-		return getView(2);
+		GameState currentState = getCurrentGameState();
+		return new KnownGameState(currentState.player2Hand, currentState.stack);
 	}
 
-	private KnownGameState getView(int playerId) {
-		CardCollection playerHand;
-		if (playerId == 1) {
-			playerHand = player1InitialHand;
-		} else if (playerId == 2) {
-			playerHand = player2InitialHand;
-		} else {
-			throw new IllegalArgumentException("Ask for player 1 or 2");
+	private GameState getCurrentGameState() {
+		GameState state = new GameState(player1InitialHand, player2InitialHand, new CardCollection());
+		for (Move move : moves) {
+			state = move.applyTo(state);
 		}
+		
+		return state;
+	}
 
-		CardCollection stack = new CardCollection();
-
-		return new KnownGameState(playerHand, stack);
+	public void addMove(Move move) {
+		moves.add(move);
 	}
 }

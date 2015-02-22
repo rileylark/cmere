@@ -5,17 +5,17 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import static us.larkoli.cmere.shared.Card.*;
+
 public class GameTest {
 
-	private CardCollection player1Hand, player2Hand;
+	private final CardCollection player1Hand= new CardCollection(ONE, ONE, TWO, TWO, THREE, THREE);
+	
+	private final CardCollection player2Hand = new CardCollection(FOUR, FOUR, FIVE, FIVE, SIX, SIX);
 	private Game game;
 
 	@Before
 	public void setup() {
-		player1Hand = new CardCollection(Card.ONE, Card.ONE, Card.TWO,
-				Card.TWO, Card.THREE, Card.THREE);
-		player2Hand = new CardCollection(Card.FOUR, Card.FOUR, Card.FIVE,
-				Card.FIVE, Card.SIX, Card.SIX);
 		game = new Game(player1Hand, player2Hand);
 	}
 
@@ -27,5 +27,21 @@ public class GameTest {
 
 		KnownGameState player2View = game.getPlayer2View();
 		assertEquals(player2Hand, player2View.yourHand);
+	}
+	
+	@Test
+	public void testLay() {
+		game.addMove(new Move.Lay(1, ONE));
+		game.addMove(new Move.Lay(2, SIX));
+		
+		KnownGameState player1View = game.getPlayer1View();
+		assertEquals(new CardCollection(ONE, TWO, TWO, THREE, THREE), player1View.yourHand);
+		
+		KnownGameState player2View = game.getPlayer2View();
+		assertEquals(new CardCollection(FOUR, FOUR, FIVE, FIVE, SIX), player2View.yourHand);
+		
+		assertEquals(new CardCollection(ONE, SIX), player1View.stack.getAscendingCopy());
+		assertEquals(new CardCollection(ONE, SIX), player2View.stack.getAscendingCopy());
+		
 	}
 }
