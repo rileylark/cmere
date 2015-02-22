@@ -15,7 +15,7 @@ public abstract class Move {
 		
 		if (legalMove(initialGameState)) {
 			applyMutations(initialGameState, builder);
-			
+			builder.setActivePlayer(initialGameState.activePlayer.otherPlayer());
 			return builder.toGameState();	
 		} else {
 			throw new IllegalMoveException();
@@ -23,6 +23,10 @@ public abstract class Move {
 	}
 	
 	public final boolean legalMove(GameState initialGameState) {
+		if (!playerId.equals(initialGameState.activePlayer)) {
+			return false;
+		}
+		
 		return true;
 	}
 	

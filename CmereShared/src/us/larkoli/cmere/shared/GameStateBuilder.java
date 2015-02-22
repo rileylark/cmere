@@ -4,7 +4,7 @@ public class GameStateBuilder {
 	private CardCollection player1Hand, player2Hand, stack;
 	int numSixesDiscarded;
 	boolean gameOver;
-	PlayerId winnerId;
+	PlayerId winnerId, activePlayer;
 
 	public GameStateBuilder from(GameState initialGameState) {
 		this.player1Hand = initialGameState.player1Hand;
@@ -13,12 +13,13 @@ public class GameStateBuilder {
 		this.numSixesDiscarded = initialGameState.numSixesDiscarded;
 		this.gameOver = initialGameState.gameOver;
 		this.winnerId = initialGameState.winnerId;
+		this.activePlayer = initialGameState.activePlayer;
 		
 		return this;
 	}
 
 	public GameState toGameState() {
-		return new GameState(player1Hand, player2Hand, stack, numSixesDiscarded, gameOver, winnerId);
+		return new GameState(activePlayer, player1Hand, player2Hand, stack, numSixesDiscarded, gameOver, winnerId);
 	}
 	
 	public GameStateBuilder setPlayerHand(PlayerId playerId, CardCollection newHand) {
@@ -49,5 +50,9 @@ public class GameStateBuilder {
 	public void setWinner(PlayerId winnerId) {
 		this.gameOver = true;
 		this.winnerId = winnerId;
+	}
+
+	public void setActivePlayer(PlayerId newActivePlayer) {
+		this.activePlayer = newActivePlayer;
 	}
 }

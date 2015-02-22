@@ -15,11 +15,11 @@ public class MoveTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		CardCollection player1Hand = new CardCollection(ONE, ONE, THREE, FIVE, FIVE);
+		CardCollection player1Hand = new CardCollection(ONE, ONE, THREE, FIVE, SIX);
 		CardCollection player2Hand = new CardCollection(TWO, TWO, FOUR, FOUR, SIX);
 		CardCollection stack = new CardCollection(THREE, SIX);
 		
-		initialGameState = new GameState(player1Hand, player2Hand, stack, 0, false, null);
+		initialGameState = new GameState(PLAYER_A, player1Hand, player2Hand, stack, 0, false, null);
 	}
 
 	@After
@@ -32,17 +32,17 @@ public class MoveTest {
 		
 		GameState newState = lay.applyTo(initialGameState);
 		
-		assertEquals(new CardCollection(ONE, ONE, FIVE, FIVE), newState.player1Hand);
+		assertEquals(new CardCollection(ONE, ONE, FIVE, SIX), newState.player1Hand);
 		assertEquals(new CardCollection(THREE, THREE, SIX), newState.stack);
 	}
 
 	@Test 
 	public void testDiscard() {
-		Move.Discard discard = new Move.Discard(PLAYER_B);
+		Move.Discard discard = new Move.Discard(PLAYER_A);
 		
 		GameState newState = discard.applyTo(initialGameState);
 		
 		assertEquals(1, newState.numSixesDiscarded);
-		assertEquals(new CardCollection(TWO, TWO, FOUR, FOUR), newState.player2Hand);
+		assertEquals(new CardCollection(ONE, ONE, THREE, FIVE), newState.player1Hand);
 	}
 }
