@@ -53,4 +53,29 @@ public abstract class Move {
 			return builder.toGameState();
 		}
 	}
+	
+	public static class Call extends Move {
+		public Call(int playerId) {
+			super(playerId);
+		}
+
+		@Override
+		public GameState applyTo(GameState initialGameState) {
+			GameStateBuilder builder = new GameStateBuilder().from(initialGameState);
+			
+			CardCollection thisHand = initialGameState.getPlayerHand(playerId);
+			CardCollection otherHand = initialGameState.getOppositePlayerHand(playerId);
+			CardCollection stack = initialGameState.stack;
+			
+			if (otherHand.getCardSum() > stack.getCardSum()) {
+				builder.setWinner(playerId);
+			} else if (otherHand.getCardSum() < thisHand.getCardSum()) {
+				builder.setWinner(playerId);
+			} else {
+				builder.setLoser(playerId);
+			}
+			
+			return builder.toGameState();
+		}
+	}
 }

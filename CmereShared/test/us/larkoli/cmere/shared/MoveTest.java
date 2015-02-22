@@ -18,7 +18,7 @@ public class MoveTest {
 		CardCollection player2Hand = new CardCollection(TWO, TWO, FOUR, FOUR, SIX);
 		CardCollection stack = new CardCollection(THREE, SIX);
 		
-		initialGameState = new GameState(player1Hand, player2Hand, stack, 0);
+		initialGameState = new GameState(player1Hand, player2Hand, stack, 0, false, null);
 	}
 
 	@After
