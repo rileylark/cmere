@@ -19,4 +19,9 @@ public class CardCollection {
 		
 		return sum;
 	}
+	
+	@Override
+	public String toString() {
+		return cards.toString();
+	}
 }
