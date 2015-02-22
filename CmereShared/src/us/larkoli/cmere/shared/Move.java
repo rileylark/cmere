@@ -10,8 +10,17 @@ public abstract class Move {
 		this.playerId = playerId;
 	}
 
-	public abstract GameState applyTo(GameState initialGameState);
+	public final GameState applyTo(GameState initialGameState) {
+		GameStateBuilder builder = new GameStateBuilder().from(initialGameState);
+		
+		applyMutations(initialGameState, builder);
+		
+		return builder.toGameState();
+	}
+	
+	protected abstract void applyMutations(GameState initialGameState, GameStateBuilder builder);
 
+	
 	public static class Lay extends Move {
 		public final Card card;
 
@@ -21,7 +30,7 @@ public abstract class Move {
 		}
 
 		@Override
-		public GameState applyTo(GameState initialGameState) {
+		public void applyMutations(GameState initialGameState, GameStateBuilder builder) {
 			// take card out of player's hand and add to stack
 			CardCollection playersHand = initialGameState
 					.getPlayerHand(playerId);
@@ -31,7 +40,7 @@ public abstract class Move {
 					card);
 			stack = CardCollectionTransformer.addCard(stack, card);
 
-			return new GameStateBuilder().from(initialGameState)
+			builder
 					.setPlayerHand(playerId, playersHand).setStack(stack)
 					.toGameState();
 		}
@@ -43,14 +52,9 @@ public abstract class Move {
 		}
 
 		@Override
-		public GameState applyTo(GameState initialGameState) {
-			GameStateBuilder builder = new GameStateBuilder();
-			
-			builder.from(initialGameState);
+		public void applyMutations(GameState initialGameState, GameStateBuilder builder) {
 			builder.setSixesDiscard(initialGameState.numSixesDiscarded + 1);
 			builder.setPlayerHand(playerId, CardCollectionTransformer.removeCard(initialGameState.getPlayerHand(playerId), SIX));
-			
-			return builder.toGameState();
 		}
 	}
 	
@@ -60,9 +64,7 @@ public abstract class Move {
 		}
 
 		@Override
-		public GameState applyTo(GameState initialGameState) {
-			GameStateBuilder builder = new GameStateBuilder().from(initialGameState);
-			
+		public void applyMutations(GameState initialGameState, GameStateBuilder builder) {
 			CardCollection thisHand = initialGameState.getPlayerHand(playerId);
 			CardCollection otherHand = initialGameState.getOppositePlayerHand(playerId);
 			CardCollection stack = initialGameState.stack;
@@ -74,8 +76,6 @@ public abstract class Move {
 			} else {
 				builder.setLoser(playerId);
 			}
-			
-			return builder.toGameState();
 		}
 	}
 }

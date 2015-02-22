@@ -1,12 +1,14 @@
 package us.larkoli.cmere.shared;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static us.larkoli.cmere.shared.Card.FIVE;
+import static us.larkoli.cmere.shared.Card.FOUR;
+import static us.larkoli.cmere.shared.Card.ONE;
+import static us.larkoli.cmere.shared.Card.SIX;
+import static us.larkoli.cmere.shared.Card.THREE;
+import static us.larkoli.cmere.shared.Card.TWO;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-
-import static us.larkoli.cmere.shared.Card.*;
 
 public class CallTest {
 
