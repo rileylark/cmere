@@ -1,5 +1,6 @@
 package us.larkoli.cmere.shared;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,37 +20,42 @@ public class OddsCalculator {
 
 	public static Result analyze(KnownGameState state) {
 
-		int myScore = state.yourHand.getCardSum();
+		int myScore = state.yourHand.getCardSum() + state.yourStuckCards.getCardSum();
+		int otherStuckScore = state.otherPlayerStuckCards.getCardSum();
+		
 		int numWinningScenarios = 0, numLosingScenarios = 0;
 		CardCollection unknownCards = getUnknownCards(state);
 		for (CardCollection possibleOtherHand : new PossibleHandleIterable(
 				unknownCards)) {
 
-			if (possibleOtherHand.getCardSum() < myScore) {
+			if ((possibleOtherHand.getCardSum() + otherStuckScore) < myScore) {
 				numLosingScenarios++;
 			} else {
 				numWinningScenarios++;
 			}
 		}
 
-		return new Result((double) numWinningScenarios / (numLosingScenarios + numWinningScenarios));
+		return new Result((double) numWinningScenarios
+				/ (numLosingScenarios + numWinningScenarios));
 	}
 
 	private static CardCollection getUnknownCards(KnownGameState state) {
 		CardCollection cardsLeft = CardCollection.FULL_DECK;
 
-		for (Card card : state.yourHand) {
-			cardsLeft = CardCollectionTransformer.removeCard(cardsLeft, card);
+		for (CardCollection collection : new CardCollection[] { state.yourHand,
+				state.yourStuckCards, state.otherPlayerStuckCards, state.stack }) {
+
+			for (Card card : collection) {
+				cardsLeft = CardCollectionTransformer.removeCard(cardsLeft,
+						card);
+			}
 		}
 
-		for (Card card : state.stack) {
-			cardsLeft = CardCollectionTransformer.removeCard(cardsLeft, card);
-		}
-		
 		for (int i = 0; i < state.numSixesDiscarded; i++) {
-			cardsLeft = CardCollectionTransformer.removeCard(cardsLeft, Card.SIX);
+			cardsLeft = CardCollectionTransformer.removeCard(cardsLeft,
+					Card.SIX);
 		}
-		
+
 		return cardsLeft;
 	}
 
