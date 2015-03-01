@@ -1,6 +1,5 @@
 package us.larkoli.cmere.shared;
 
-import static org.junit.Assert.*;
 import static us.larkoli.cmere.shared.Card.FIVE;
 import static us.larkoli.cmere.shared.Card.FOUR;
 import static us.larkoli.cmere.shared.Card.ONE;
@@ -8,7 +7,6 @@ import static us.larkoli.cmere.shared.Card.SIX;
 import static us.larkoli.cmere.shared.Card.THREE;
 import static us.larkoli.cmere.shared.Card.TWO;
 import static us.larkoli.cmere.shared.PlayerId.PLAYER_A;
-import static us.larkoli.cmere.shared.PlayerId.PLAYER_B;
 
 import org.junit.Test;
 

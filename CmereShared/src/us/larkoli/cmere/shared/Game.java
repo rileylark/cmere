@@ -16,12 +16,12 @@ public class Game {
 	public KnownGameState getPlayer1View() {
 
 		GameState currentState = getCurrentGameState();
-		return new KnownGameState(currentState.player1Hand, currentState.stack);
+		return new KnownGameState(currentState.player1Hand, currentState.stack, currentState.numSixesDiscarded);
 	}
 
 	public KnownGameState getPlayer2View() {
 		GameState currentState = getCurrentGameState();
-		return new KnownGameState(currentState.player2Hand, currentState.stack);
+		return new KnownGameState(currentState.player2Hand, currentState.stack, currentState.numSixesDiscarded);
 	}
 
 	public GameState getCurrentGameState() {
