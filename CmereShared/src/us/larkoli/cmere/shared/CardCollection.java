@@ -19,8 +19,8 @@ public class CardCollection extends AbstractList<Card> {
 		this.cards = Collections.unmodifiableList(Arrays.asList(cards));
 	}
 
-	CardCollection(List<Card> cards) {
-		this.cards = cards;
+	public CardCollection(List<Card> cards) {
+		this.cards = Collections.unmodifiableList(new ArrayList<Card>(cards));
 	}
 
 	public int getCardSum() {

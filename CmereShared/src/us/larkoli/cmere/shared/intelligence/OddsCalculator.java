@@ -1,9 +1,12 @@
-package us.larkoli.cmere.shared;
+package us.larkoli.cmere.shared.intelligence;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import us.larkoli.cmere.shared.Card;
+import us.larkoli.cmere.shared.CardCollection;
+import us.larkoli.cmere.shared.CardCollectionTransformer;
 import us.larkoli.cmere.shared.gamestate.KnownGameState;
 
 import com.google.collections.Permutations;

@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import us.larkoli.cmere.shared.gamestate.KnownGameState;
+import us.larkoli.cmere.shared.intelligence.OddsCalculator;
 import static us.larkoli.cmere.shared.Card.*;
 
 public class OddsCalculatorTest {
