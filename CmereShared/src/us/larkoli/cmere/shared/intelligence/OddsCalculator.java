@@ -25,7 +25,6 @@ public class OddsCalculator {
 
 	public static Result analyze(KnownGameState state) {
 
-		int myScore = state.yourHand.getCardSum() + state.yourStuckCards.getCardSum();
 		int otherStuckScore = state.otherPlayerStuckCards.getCardSum();
 		
 		int numWinningScenarios = 0, numLosingScenarios = 0;
@@ -33,7 +32,7 @@ public class OddsCalculator {
 		for (CardCollection possibleOtherHand : new PossibleHandleIterable(
 				unknownCards)) {
 
-			if ((possibleOtherHand.getCardSum() + otherStuckScore) < myScore) {
+			if ((possibleOtherHand.getCardSum() + otherStuckScore) < state.yourScore) {
 				numLosingScenarios++;
 			} else {
 				numWinningScenarios++;
