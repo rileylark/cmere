@@ -91,6 +91,30 @@ public abstract class Move {
 		}
 	}
 	
+
+	public static class Pickup extends Move{
+		public final Card card;
+		
+		public Pickup(PlayerId playerId, Card card) {
+			super(playerId);
+			
+			this.card = card;
+		}
+
+		@Override
+		protected void applyMutations(GameState initialGameState,
+				GameStateBuilder builder) {
+			
+			if (initialGameState.stack.size() == 0 || !initialGameState.stack.get(0).equals(card)) {
+				throw new IllegalMoveException();
+			}
+			
+			builder.setPlayerStuckCards(playerId, CardCollectionTransformer.addCard(initialGameState.getPlayerStuckCards(playerId), card));
+			builder.setStack(CardCollectionTransformer.popCard(initialGameState.stack));
+		}
+
+	}
+	
 	public static class IllegalMoveException extends RuntimeException {
 		private static final long serialVersionUID = 1L;
 	}

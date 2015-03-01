@@ -20,7 +20,7 @@ public class CallTest {
 		CardCollection player2Hand = new CardCollection(SIX, SIX, SIX, SIX);
 		CardCollection stack = new CardCollection(FIVE, THREE);
 
-		GameState state = new GameState(PLAYER_A, player1Hand, player2Hand, stack, 2, false, null);
+		GameState state = new GameState(PLAYER_A, player1Hand, player2Hand, CardCollection.EMPTY, CardCollection.EMPTY, stack, 2, false, null);
 
 		state = new Move.Call(PLAYER_A).applyTo(state);
 
@@ -34,7 +34,7 @@ public class CallTest {
 		CardCollection player2Hand = new CardCollection(SIX, TWO, TWO); // 10
 		CardCollection stack = new CardCollection(SIX, FIVE, THREE); //14
 
-		GameState state = new GameState(PLAYER_A, player1Hand, player2Hand, stack, 2, false, null);
+		GameState state = new GameState(PLAYER_A, player1Hand, player2Hand, CardCollection.EMPTY, CardCollection.EMPTY, stack, 2, false, null);
 		
 		state = new Move.Call(PLAYER_A).applyTo(state);
 		
@@ -48,7 +48,7 @@ public class CallTest {
 		CardCollection player2Hand = new CardCollection(SIX, SIX, ONE); // 13
 		CardCollection stack = new CardCollection(SIX, FIVE, THREE); //14
 
-		GameState state = new GameState(PLAYER_A, player1Hand, player2Hand, stack, 2, false, null);
+		GameState state = new GameState(PLAYER_A, player1Hand, player2Hand, CardCollection.EMPTY, CardCollection.EMPTY, stack, 2, false, null);
 		
 		state = new Move.Call(PLAYER_A).applyTo(state);
 		

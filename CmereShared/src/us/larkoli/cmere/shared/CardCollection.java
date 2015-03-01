@@ -11,6 +11,8 @@ public class CardCollection extends AbstractList<Card> {
 	public static final CardCollection FULL_DECK = new CardCollection(ONE, ONE,
 			TWO, TWO, THREE, THREE, FOUR, FOUR, FIVE, FIVE, SIX, SIX, SIX, SIX,
 			SIX, SIX);
+	public static final CardCollection EMPTY = new CardCollection();
+	
 	public final List<Card> cards;
 
 	public CardCollection(Card... cards) {

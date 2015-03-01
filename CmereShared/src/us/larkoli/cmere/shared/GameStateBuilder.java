@@ -1,7 +1,7 @@
 package us.larkoli.cmere.shared;
 
 public class GameStateBuilder {
-	private CardCollection player1Hand, player2Hand, stack;
+	private CardCollection player1Hand, player2Hand, player1StuckCards, player2StuckCards, stack;
 	int numSixesDiscarded;
 	boolean gameOver;
 	PlayerId winnerId, activePlayer;
@@ -9,6 +9,8 @@ public class GameStateBuilder {
 	public GameStateBuilder from(GameState initialGameState) {
 		this.player1Hand = initialGameState.player1Hand;
 		this.player2Hand = initialGameState.player2Hand;
+		this.player1StuckCards = initialGameState.player1StuckCards;
+		this.player2StuckCards = initialGameState.player2StuckCards;
 		this.stack = initialGameState.stack;
 		this.numSixesDiscarded = initialGameState.numSixesDiscarded;
 		this.gameOver = initialGameState.gameOver;
@@ -19,7 +21,7 @@ public class GameStateBuilder {
 	}
 
 	public GameState toGameState() {
-		return new GameState(activePlayer, player1Hand, player2Hand, stack, numSixesDiscarded, gameOver, winnerId);
+		return new GameState(activePlayer, player1Hand, player2Hand, player1StuckCards, player2StuckCards, stack, numSixesDiscarded, gameOver, winnerId);
 	}
 	
 	public GameStateBuilder setPlayerHand(PlayerId playerId, CardCollection newHand) {
@@ -54,5 +56,18 @@ public class GameStateBuilder {
 
 	public void setActivePlayer(PlayerId newActivePlayer) {
 		this.activePlayer = newActivePlayer;
+	}
+
+	public void setPlayerStuckCards(PlayerId playerId, CardCollection newStuckCards) {
+		switch (playerId) {
+		case PLAYER_A:
+			this.player1StuckCards = newStuckCards;
+			break;
+		case PLAYER_B:
+			this.player2StuckCards = newStuckCards;
+			break;
+		default:
+			throw new IllegalArgumentException("Choose PLAYER_A or PLAYER_B");
+		}
 	}
 }
