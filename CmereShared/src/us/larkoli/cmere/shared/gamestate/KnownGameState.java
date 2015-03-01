@@ -1,4 +1,6 @@
-package us.larkoli.cmere.shared;
+package us.larkoli.cmere.shared.gamestate;
+
+import us.larkoli.cmere.shared.CardCollection;
 
 public class KnownGameState {
 	public final CardCollection stack, yourHand, yourStuckCards, otherPlayerStuckCards;

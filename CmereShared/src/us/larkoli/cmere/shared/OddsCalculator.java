@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import us.larkoli.cmere.shared.gamestate.KnownGameState;
+
 import com.google.collections.Permutations;
 
 public class OddsCalculator {

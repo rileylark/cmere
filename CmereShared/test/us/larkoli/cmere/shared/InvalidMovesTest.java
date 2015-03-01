@@ -11,6 +11,7 @@ import static us.larkoli.cmere.shared.PlayerId.PLAYER_A;
 import org.junit.Test;
 
 import us.larkoli.cmere.shared.Move.IllegalMoveException;
+import us.larkoli.cmere.shared.gamestate.GameState;
 
 public class InvalidMovesTest {
 

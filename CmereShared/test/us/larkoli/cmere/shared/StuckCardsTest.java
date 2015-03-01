@@ -13,6 +13,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import us.larkoli.cmere.shared.gamestate.GameState;
+
 public class StuckCardsTest {
 
 	private GameState initialGameState;

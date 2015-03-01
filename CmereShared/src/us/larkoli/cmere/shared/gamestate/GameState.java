@@ -1,6 +1,8 @@
-package us.larkoli.cmere.shared;
+package us.larkoli.cmere.shared.gamestate;
 
 import static us.larkoli.cmere.shared.PlayerId.*;
+import us.larkoli.cmere.shared.CardCollection;
+import us.larkoli.cmere.shared.PlayerId;
 
 public class GameState {
 	public final PlayerId activePlayer;

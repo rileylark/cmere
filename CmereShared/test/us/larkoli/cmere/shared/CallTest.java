@@ -7,10 +7,11 @@ import static us.larkoli.cmere.shared.Card.ONE;
 import static us.larkoli.cmere.shared.Card.SIX;
 import static us.larkoli.cmere.shared.Card.THREE;
 import static us.larkoli.cmere.shared.Card.TWO;
-
 import static us.larkoli.cmere.shared.PlayerId.*;
 
 import org.junit.Test;
+
+import us.larkoli.cmere.shared.gamestate.GameState;
 
 public class CallTest {
 

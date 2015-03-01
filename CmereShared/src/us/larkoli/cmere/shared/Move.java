@@ -1,6 +1,8 @@
 package us.larkoli.cmere.shared;
 
 import static us.larkoli.cmere.shared.Card.*;
+import us.larkoli.cmere.shared.gamestate.GameState;
+import us.larkoli.cmere.shared.gamestate.GameStateBuilder;
 
 public abstract class Move {
 

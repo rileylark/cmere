@@ -1,4 +1,7 @@
-package us.larkoli.cmere.shared;
+package us.larkoli.cmere.shared.gamestate;
+
+import us.larkoli.cmere.shared.CardCollection;
+import us.larkoli.cmere.shared.PlayerId;
 
 public class GameStateBuilder {
 	private CardCollection player1Hand, player2Hand, player1StuckCards, player2StuckCards, stack;

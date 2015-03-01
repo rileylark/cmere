@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import us.larkoli.cmere.shared.gamestate.GameState;
 import static us.larkoli.cmere.shared.Card.*;
 import static us.larkoli.cmere.shared.PlayerId.*;
 

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import us.larkoli.cmere.shared.gamestate.KnownGameState;
 import static us.larkoli.cmere.shared.Card.*;
 import static us.larkoli.cmere.shared.PlayerId.*;
 

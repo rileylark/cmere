@@ -2,6 +2,9 @@ package us.larkoli.cmere.shared;
 
 import java.util.ArrayList;
 
+import us.larkoli.cmere.shared.gamestate.GameState;
+import us.larkoli.cmere.shared.gamestate.KnownGameState;
+
 public class Game {
 
 	public final CardCollection player1InitialHand, player2InitialHand;
