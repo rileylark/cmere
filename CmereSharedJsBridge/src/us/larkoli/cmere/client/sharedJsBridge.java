@@ -16,7 +16,7 @@ public class sharedJsBridge implements EntryPoint {
 		var jsCard = card.@us.larkoli.cmere.shared.Card::toString()();
 
 		$wnd.cmereShared = {
-			test : "omg so shared right now",
+			test : "omg so shared right now!!",
 			card : jsCard
 		};
 		if (typeof $wnd.cmereSharedLoaded === 'function') {
