@@ -8,8 +8,7 @@ public class GameDealerTest {
 
 	@Test
 	public void testNumberOfCardsDealt() {
-		GameDealer gameDealer = new GameDealer();
-		Game game = gameDealer.deal();
+		Game game = GameDealer.deal();
 		
 		assertEquals(6, game.player1InitialHand.cards.size());
 		assertEquals(6, game.player2InitialHand.cards.size());

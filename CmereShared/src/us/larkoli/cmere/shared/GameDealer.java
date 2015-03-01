@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class GameDealer {
 
-	public Game deal() {
+	public static Game deal() {
 
 		Card[] deck = new Card[] { Card.ONE, Card.ONE, Card.TWO, Card.TWO,
 				Card.THREE, Card.THREE, Card.FOUR, Card.FOUR, Card.FIVE,
@@ -17,7 +17,7 @@ public class GameDealer {
 		return new Game(new CardCollection(player1Hand), new CardCollection(player2Hand));
 	}
 
-	private Card[] pickSix(Card[] deck) {
+	private static Card[] pickSix(Card[] deck) {
 		Card[] result = new Card[6];
 		
 		int i = 0;
