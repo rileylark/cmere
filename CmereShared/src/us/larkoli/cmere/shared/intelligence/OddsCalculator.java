@@ -7,9 +7,8 @@ import java.util.List;
 import us.larkoli.cmere.shared.Card;
 import us.larkoli.cmere.shared.CardCollection;
 import us.larkoli.cmere.shared.CardCollectionTransformer;
+import us.larkoli.cmere.shared.Permutations;
 import us.larkoli.cmere.shared.gamestate.KnownGameState;
-
-import com.google.collections.Permutations;
 
 public class OddsCalculator {
 

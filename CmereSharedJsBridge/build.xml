@@ -43,6 +43,7 @@
         <pathelement location="src"/>
         <path refid="project.class.path"/>
       </classpath>
+      <arg line="-strict" />
       <arg line="-war"/>
       <arg value="war"/>
       <!-- Additional arguments like -style PRETTY or -logLevel DEBUG -->

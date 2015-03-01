@@ -1,4 +1,4 @@
-package com.google.collections;
+package us.larkoli.cmere.shared;
 
 import java.util.ArrayList;
 import java.util.List;
