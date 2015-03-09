@@ -8,4 +8,14 @@ public enum Card {
 	private Card(int pointValue) {
 		this.pointValue = pointValue;
 	}
+	
+	public static Card fromPointValue(int pointValue) {
+		for (Card card : Card.values()) {
+			if (card.pointValue == pointValue) {
+				return card;
+			}
+		}
+		
+		throw new IllegalArgumentException("No card for point value " + pointValue);
+	}
 }
