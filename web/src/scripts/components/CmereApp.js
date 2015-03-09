@@ -10,18 +10,26 @@ require('../../styles/main.css');
 
 var CmereApp = React.createClass({
     render: function () {
+        var playCard = function(card) {
+            console.log("PLAYING: ", card);
+        };
+
         return (
             <div className='main'>
                 <h1>C'mere</h1>
                 <div>
-                    Opponent Hand
+                    Opponent has {this.props.gameState.player2Hand} cards
                 </div>
                 <div>
                     Stack
+                    <KnownHand cardCollection={this.props.gameState.stack}/>
                 </div>
                 <div>
                     Your Hand
-                    <KnownHand />
+                    <KnownHand
+                        cardCollection={this.props.gameState.player1Hand}
+                        onClickCard={playCard}
+                    />
                 </div>
             </div>
             );
