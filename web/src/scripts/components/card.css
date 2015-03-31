@@ -31,3 +31,7 @@
 .card6 {
     width: 165px;
 }
+
+.stuck {
+    background-color: tomato;
+}

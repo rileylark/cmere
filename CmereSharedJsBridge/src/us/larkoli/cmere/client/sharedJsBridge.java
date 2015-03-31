@@ -80,6 +80,14 @@ public class sharedJsBridge implements EntryPoint {
 		return new Move.Discard(PlayerId.PLAYER_A);
 	}
 	
+	private Move.Pickup makePickupMove (Game game) {
+		
+		CardCollection currentStack = game.getCurrentGameState().stack;
+		Card card = currentStack.get(0);
+		
+		return new Move.Pickup(PlayerId.PLAYER_A, card);
+	}
+	
 	private void makeComputerMove(Game game) {
 		
 		KnownGameState computerView = game.getPlayer2View();
@@ -110,6 +118,11 @@ public class sharedJsBridge implements EntryPoint {
 				
 				discard: function discard() {
 					var newMove = exporter.@us.larkoli.cmere.client.sharedJsBridge::makeDiscardMove()();
+					game.@us.larkoli.cmere.shared.Game::addMove(Lus/larkoli/cmere/shared/Move;)(newMove);
+				},
+				
+				pickup: function pickup() {
+					var newMove = exporter.@us.larkoli.cmere.client.sharedJsBridge::makePickupMove(Lus/larkoli/cmere/shared/Game;)(game);
 					game.@us.larkoli.cmere.shared.Game::addMove(Lus/larkoli/cmere/shared/Move;)(newMove);
 				}				
 			},

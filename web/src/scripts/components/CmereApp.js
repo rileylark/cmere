@@ -43,6 +43,12 @@ var CmereApp = React.createClass({
         });
     },
 
+    pickUpFromStack: function () {
+        this.fireEvent({
+            type: 'PICK_UP_FROM_STACK'
+        });
+    },
+
     render: function () {
         var game = this.props.game;
         var component = this;
@@ -61,12 +67,13 @@ var CmereApp = React.createClass({
                 </div>
                 <div>
                 Stack
-                    <Stack cardCollection={this.state.gameState.stack}/>
+                    <Stack cardCollection={this.state.gameState.stack} onPickup={component.pickUpFromStack} />
                 </div>
                 <div>
                 Your Hand
                     <KnownHand
-                    cardCollection={this.state.gameState.player1Hand}
+                    stuckCards={this.state.gameState.player1StuckCards}
+                    movableCards={this.state.gameState.player1Hand}
                     onClickCard={component.playCard}
                     />
                 </div>
