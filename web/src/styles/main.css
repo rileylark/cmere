@@ -39,3 +39,12 @@ html, body {
 .fade-leave.fade-leave-active {
   opacity: 0.01;
 }
+
+button {
+    padding: 10px;
+    color: black;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+    border: 0;
+}
