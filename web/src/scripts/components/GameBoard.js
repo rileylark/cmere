@@ -10,7 +10,7 @@ require('../../styles/normalize.css');
 require('../../styles/main.css');
 
 
-var CmereApp = React.createClass({
+var GameBoard = React.createClass({
     componentWillMount: function () {
         var component = this;
 
@@ -96,4 +96,4 @@ var CmereApp = React.createClass({
     }
 });
 
-module.exports = CmereApp;
+module.exports = GameBoard;
