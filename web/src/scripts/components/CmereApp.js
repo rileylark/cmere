@@ -1,7 +1,9 @@
 'use strict';
 
 var React = require('react/addons');
-var KnownHand = require('./KnownHand');
+var cardWidgets = require('./cardWidgets');
+var KnownHand = cardWidgets.KnownHand;
+var Stack = cardWidgets.Stack;
 
 // CSS
 require('../../styles/normalize.css');
@@ -59,7 +61,7 @@ var CmereApp = React.createClass({
                 </div>
                 <div>
                 Stack
-                    <KnownHand cardCollection={this.state.gameState.stack}/>
+                    <Stack cardCollection={this.state.gameState.stack}/>
                 </div>
                 <div>
                 Your Hand

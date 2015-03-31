@@ -35,4 +35,20 @@ var KnownHand = React.createClass({
     }
 });
 
-module.exports = KnownHand;
+var Stack = React.createClass({
+    render: function () {
+        var cards = [], i;
+        for (i = 0; i < this.props.cardCollection.cards.length; i++) {
+            cards.push(createCard(this.props.cardCollection.cards[i], this.props.onClickCard));
+        }
+
+        return (
+            <div>{cards}</div>
+            );
+    }
+});
+
+module.exports = {
+    KnownHand: KnownHand,
+    Stack: Stack
+};
