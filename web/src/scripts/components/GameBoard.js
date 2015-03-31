@@ -72,7 +72,6 @@ var GameBoard = React.createClass({
 
         return (
             <div className='main'>
-                <h1>C'mere</h1>
                 {header}
                 <div>
                 Opponent has {this.state.gameState.player2Hand.cards.length} cards left
