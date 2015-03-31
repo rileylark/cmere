@@ -28,8 +28,7 @@ var GameBoard = React.createClass({
     },
 
     fireEvent: function (event) {
-        var newState = this.props.eventProcessor(event);
-        this.setState({gameState: newState});
+        this.props.eventBus.fire(event);
     },
 
     playCard: function (card) {

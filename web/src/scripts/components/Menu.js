@@ -4,7 +4,7 @@ require('./menu.css');
 
 module.exports = React.createClass({
     startNewGame: function () {
-        this.props.eventProcessor({
+        this.props.eventBus.fire({
             type: 'START_NEW_GAME'
         });
     },

@@ -15,12 +15,11 @@ module.exports = React.createClass({
                 <h1>C'mere</h1>
             </div>
             <div className="menuPanel">
-                <Menu eventProcessor={component.props.eventProcessor} />
+                <Menu eventBus={component.props.eventBus}/>
             </div>
             <div className="gamePanel">
                 <GameBoard
                 gameStore={component.props.gameStore}
-                eventProcessor={component.props.eventProcessor}
                 eventBus={component.props.eventBus}/>
             </div>
 
