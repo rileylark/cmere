@@ -11,17 +11,22 @@ require('../../styles/main.css');
 var CmereApp = React.createClass({
     componentWillMount: function () {
         var component = this;
-        var game = component.props.game;
 
         component.setState({
-            gameState: game.getCurrentGameState()
+            gameState: component.props.gameState
         });
     },
 
+    fireEvent: function (event) {
+        var newState = this.props.eventProcessor(event);
+        this.setState({gameState: newState});
+    },
+
     playCard: function (card) {
-        this.props.game.addPlayer1Move.lay(card);
-        this.props.game.addComputerMove();
-        this.setState({gameState: this.props.game.getCurrentGameState()});
+        this.fireEvent({
+            type: 'PLAY_CARD',
+            card: card
+        });
     },
 
     render: function () {
