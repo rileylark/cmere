@@ -29,6 +29,18 @@ var CmereApp = React.createClass({
         });
     },
 
+    callRound: function () {
+        this.fireEvent({
+            type: 'CALL_ROUND'
+        });
+    },
+
+    discard: function () {
+        this.fireEvent({
+            type: 'DISCARD'
+        });
+    },
+
     render: function () {
         var game = this.props.game;
         var component = this;
@@ -55,6 +67,14 @@ var CmereApp = React.createClass({
                     cardCollection={this.state.gameState.player1Hand}
                     onClickCard={component.playCard}
                     />
+                </div>
+                <div>
+                    <button onClick={component.callRound}>
+                    Call
+                    </button>
+                    <button onClick={component.discard}>
+                    Discard
+                    </button>
                 </div>
             </div>
             );

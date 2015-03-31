@@ -72,6 +72,14 @@ public class sharedJsBridge implements EntryPoint {
 		return newMove;
 	}
 	
+	private Move.Call makeCallMove() {
+		return new Move.Call(PlayerId.PLAYER_A);
+	}
+	
+	private Move.Discard makeDiscardMove () {
+		return new Move.Discard(PlayerId.PLAYER_A);
+	}
+	
 	private void makeComputerMove(Game game) {
 		
 		KnownGameState computerView = game.getPlayer2View();
@@ -92,6 +100,16 @@ public class sharedJsBridge implements EntryPoint {
 			addPlayer1Move: {
 				lay: function layCard(card) {
 					var newMove = exporter.@us.larkoli.cmere.client.sharedJsBridge::makeLayMove(I)(card);
+					game.@us.larkoli.cmere.shared.Game::addMove(Lus/larkoli/cmere/shared/Move;)(newMove);
+				},
+				
+				call: function callRound() {
+					var newMove = exporter.@us.larkoli.cmere.client.sharedJsBridge::makeCallMove()();
+					game.@us.larkoli.cmere.shared.Game::addMove(Lus/larkoli/cmere/shared/Move;)(newMove);
+				},
+				
+				discard: function discard() {
+					var newMove = exporter.@us.larkoli.cmere.client.sharedJsBridge::makeDiscardMove()();
 					game.@us.larkoli.cmere.shared.Game::addMove(Lus/larkoli/cmere/shared/Move;)(newMove);
 				}				
 			},
