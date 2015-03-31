@@ -15,7 +15,15 @@ var GameBoard = React.createClass({
         var component = this;
 
         component.setState({
-            gameState: component.props.gameState
+            gameState: component.props.gameStore.getGameState()
+        });
+
+        component.props.eventBus.addListener(function (event) {
+            if (event.gameStateChanged) {
+                component.setState({
+                    gameState: component.props.gameStore.getGameState()
+                });
+            }
         });
     },
 

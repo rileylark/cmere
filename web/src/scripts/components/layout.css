@@ -1,0 +1,29 @@
+.layoutPanel {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.headerPanel {
+    position: relative;
+    top: 0;
+    height: 5px;
+}
+
+.menuPanel {
+    position: relative;
+    left: 0;
+    top: 5px;
+    width: 200px;
+    bottom: 0;
+}
+
+.gamePanel {
+    position: relative;
+    left: 200px;
+    right: 0px;
+    top: 5px;
+    bottom: 0;
+}
