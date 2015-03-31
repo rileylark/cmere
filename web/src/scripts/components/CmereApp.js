@@ -52,16 +52,28 @@ var CmereApp = React.createClass({
     render: function () {
         var game = this.props.game;
         var component = this;
+        var header, actionButtons;
+
+        if (this.state.gameState.gameOver) {
+            header = <div>Winner: {this.state.gameState.winnerId}</div>;
+            actionButtons = <div></div>;
+        } else {
+            header = <div>Current player: {this.state.gameState.activePlayerId}</div>;
+            actionButtons = <div>
+                <button onClick={component.callRound}>
+                Call
+                </button>
+                <button onClick={component.discard}>
+                Discard
+                </button>
+            </div>;
+        }
+
 
         return (
             <div className='main'>
                 <h1>C'mere</h1>
-                <div>
-                Current player: {this.state.gameState.activePlayerId}
-                </div>
-                <div>
-                Winner: {this.state.gameState.winnerId}
-                </div>
+                {header}
                 <div>
                 Opponent has {this.state.gameState.player2Hand.cards.length} cards left
                 </div>
@@ -77,14 +89,8 @@ var CmereApp = React.createClass({
                     onClickCard={component.playCard}
                     />
                 </div>
-                <div>
-                    <button onClick={component.callRound}>
-                    Call
-                    </button>
-                    <button onClick={component.discard}>
-                    Discard
-                    </button>
-                </div>
+                {actionButtons}
+
             </div>
             );
     }
