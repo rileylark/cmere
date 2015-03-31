@@ -16,14 +16,31 @@
     position: relative;
     left: 0;
     top: 5px;
-    width: 200px;
     bottom: 0;
+    overflow: hidden;
+    transition: width 0.5s;
 }
 
 .gamePanel {
     position: relative;
-    left: 200px;
     right: 0px;
     top: 5px;
     bottom: 0;
+    transition: left 0.5s;
+}
+
+.menuPanel.menu--open {
+    width: 200px;
+}
+
+.menuPanel.menu--closed {
+    width: 20px;
+}
+
+.gamePanel.menu--open {
+    left: 200px;
+}
+
+.gamePanel.menu--closed {
+    left: 20px;
 }
